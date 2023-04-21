@@ -9,10 +9,10 @@ import {
   Divider,
   useColorMode,
 } from "@chakra-ui/react";
-import { HamburgerIcon, CloseIcon, SunIcon, MoonIcon } from "@chakra-ui/icons";
 import { useState } from "react";
 import Link from "next/link";
-import { BsSearch } from "react-icons/bs";
+import { BsSearch, BsFillSunFill, BsMoonFill } from "react-icons/bs";
+import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 
 const Navbar = () => {
   const [active, setIsActive] = useState(1);
@@ -39,15 +39,15 @@ const Navbar = () => {
         py={["1", "2", "3"]}
       >
         <Box>
-            <Link href="/">
-          <Text
-            fontWeight={"bold"}
-            fontSize={{ md: "12px", lg: "24px" }}
-            color="red.300"
-          >
-            B NEWS
-          </Text>
-            </Link>
+          <Link href="/">
+            <Text
+              fontWeight={"bold"}
+              fontSize={{ md: "12px", lg: "24px" }}
+              color="red.300"
+            >
+              B NEWS
+            </Text>
+          </Link>
         </Box>
         <Flex display={["none", "none", "flex", "flex"]}>
           {links.map((link) => (
@@ -74,7 +74,7 @@ const Navbar = () => {
             <Icon as={BsSearch} boxSize="4" />
           </Link>
           <IconButton
-            icon={isDark ? <SunIcon /> : <MoonIcon />}
+            icon={isDark ? <BsFillSunFill /> : <BsMoonFill />}
             aria-label="Toggle Theme"
             colorScheme="green"
             onClick={toggleColorMode}
@@ -103,14 +103,14 @@ const Navbar = () => {
         <Flex gap="2">
           <Icon
             aria-label="Open Menu"
-            as={HamburgerIcon}
+            as={AiOutlineMenu}
             boxSize="6"
             mr="2"
             // display={["flex", "flex", "none", "none"]}
             onClick={() => changeShow("flex")}
           />
           <IconButton
-            icon={isDark ? <SunIcon /> : <MoonIcon />}
+            icon={isDark ? <BsFillSunFill /> : <BsMoonFill />}
             aria-label="Toggle Theme"
             colorScheme="green"
             onClick={toggleColorMode}
@@ -132,7 +132,7 @@ const Navbar = () => {
         >
           <Flex justify={"flex-end"}>
             <IconButton
-              icon={<CloseIcon />}
+              icon={<AiOutlineClose />}
               mt="2"
               mr="2"
               aria-label="Close Menu"

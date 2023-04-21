@@ -2,8 +2,8 @@ import NewsArticleGrid from "@/components/NewsArticleGrid";
 import { NewsArticles, NewsResponse } from "@/models/NewsArticles";
 import { GetStaticProps, GetStaticPaths } from "next";
 import { useRouter } from "next/router";
-import { Box, Divider } from "@chakra-ui/react";
-import Head from "next/head";
+import { Box } from "@chakra-ui/react";
+
 
 
 interface CategoryNewsPageProps {
@@ -35,9 +35,9 @@ export const getStaticProps: GetStaticProps<CategoryNewsPageProps> = async({para
       `https://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=${process.env.NEWS_API_KEY}`
     )
 
-    const newsResponse: NewsResponse = await (await response).json();
+    const newsResponse: NewsResponse = await (response).json();
     return {
-      props: { newsArticles: newsResponse.articles },
+      props: { newsArticles: newsResponse.articles } ,
       revalidate: 5 * 60,
     };
 }
@@ -55,8 +55,6 @@ const CategoryNewsPage = ({ newsArticles }: CategoryNewsPageProps) => {
       </Head> */}
 
         <Box mt="2">
-         
-          {/* <Text>{title}</Text> */}
           <NewsArticleGrid articles={newsArticles} />
         </Box>
       </>
