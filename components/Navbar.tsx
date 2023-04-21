@@ -58,6 +58,10 @@ const Navbar = () => {
                 onClick={() => setIsActive(link.id)}
                 bg={active == link.id ? "orange" : "transparent"}
                 size={["xs", "sm"]}
+                _hover={{
+                  background: "white",
+                  color: "teal.500",
+                }}
               >
                 {link.title}
               </Button>
