@@ -10,6 +10,7 @@ import {
   chakra,
 } from "@chakra-ui/react";
 import Image from "next/image";
+import { BsTypeUnderline } from "react-icons/bs";
 import placeholderImage from "../Assets/images/placeholder.jpg"
 
 interface NewsArticleEntryProps {
@@ -25,9 +26,18 @@ export const NewsArticleEntry = ({article : {
           shouldForwardProp: (prop) =>
             ["width", "height", "src", "alt"].includes(prop),
         });
+
+        
+
     return (
       <a href={url}>
-        <Card variant="elevated" h={["420px", "350px", "450px"]}>
+        <Card
+          variant="elevated"
+          h={["420px", "350px", "450px"]}
+          _hover={{
+            boxShadow: "dark-lg",
+          }}
+        >
           <CardBody>
             <OurImage
               src={validImageUrl || placeholderImage}
@@ -40,7 +50,14 @@ export const NewsArticleEntry = ({article : {
               objectFit="cover"
             />
             <Stack mt="6" spacing={"3"}>
-              <Heading size={["xs", "sm", "md"]}>{title}</Heading>
+              <Heading
+                size={["xs", "sm", "md"]}
+                _hover={{
+                  textDecoration: "underline",
+                }}
+              >
+                {title}
+              </Heading>
               <Text fontSize={["xs", "sm", "md"]} noOfLines={3}>
                 {description}
               </Text>
